@@ -1,0 +1,202 @@
+﻿
+
+@model _23DH110152_PhamNguyenQuocAnh_KTBE.Models.ViewModel.HomeProductVM
+@{
+    ViewBag.Title = "Customer home page";
+    @*<link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css"/>*@
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+
+    .banner {
+        background-image: url("../Content/img/nen1.jpg");
+        background-size: cover;
+        background-position: center;
+        height: auto;
+        /*display: flex;*/
+        align-content: center;
+        /* justify-content: center;*/
+        color: white;
+    }
+
+
+    .banner-content {
+        text-align: center;
+        color: white;
+        margin-top: 30rem;
+    }
+
+        .banner-content h2 {
+            font-size: 2rem;
+        }
+
+        .banner-content p {
+            font-size: 1.5rem;
+        }
+
+        .banner-content a {
+            font-size: 2rem;
+        }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: deepskyblue;
+        color: white;
+        text-decoration: none;
+        /*font-weight: bold;*/
+    }
+
+    #futureProd {
+        text-align: center;
+    }
+
+    .proDContainer {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        /* flex-wrap: wrap;*/
+    }
+
+    .product-muc1 {
+        background-image: url("../Content/img/gundame.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 200px;
+        width: 400px;
+        /*display: flex;*/
+        align-content: center;
+        /* justify-content: center;*/
+        color: yellow;
+    }
+
+    .product-muc2 {
+        background-image: url("../Content/img/anime1.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 200px;
+        width: 400px;
+        /*display: flex;*/
+        align-content: center;
+        /* justify-content: center;*/
+        color: yellow;
+    }
+
+    .product-muc3 {
+        background-image: url("../Content/img/lego.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 200px;
+        width: 400px;
+        /*display: flex;*/
+        align-content: center;
+        /* justify-content: center;*/
+        color: yellow;
+    }
+
+    .ntn {
+        display: inline-block;
+        padding: 10px 0px;
+        /*background-color: deepskyblue;*/
+        color: orange;
+        text-decoration: none;
+        /*font-weight: bold;*/
+        font-size: 3rem;
+    }
+
+    .prodPrice {
+        font-size: 20px;
+        color: green;
+        /*   font-weight: bold;*/
+    }
+
+    .content-section {
+        text-align: center;
+        padding: 1px 60px;
+        margin-top: 1rem;
+    }
+
+        .content-section h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            /*font-weight: bold;*/
+        }
+
+
+    .proD {
+        font-size: 20px;
+        color: lawngreen;
+        font: arial;
+        margin-top: -50px;
+    }
+
+    .price {
+        font-size: 20px;
+        color: green;
+        margin-top: -80px;
+        /*  font-weight: bold;*/
+    }
+
+
+    #futureProd {
+        margin-bottom: 300px;
+    }
+
+    .toplist h2 {
+    }
+
+    .SPNB h2 {
+        color: red;
+    }
+
+    .productList {
+        text-align: center;
+    }
+
+        .productList h2 {
+            font-size: 30px;
+        }
+
+    .search-input {
+        width: 400px;
+        height: 30px;
+    }
+
+    .search-button {
+        height: 30px;
+    }
+</style>
+@*Phần Banner*@
+<section class="container-fluid banner">
+    <div class="banner-content">
+        <h2>Chào mừng bạn đến với shop bán mô hình của chúng tôi </h2>
+        <p>Rất nhiều mô hình đẹp đang chờ bạn săn đón</p>
+        <a href="#" class="btn">Bắt đầu mua sắm</a>
+    </div>
+</section>
+
+
+
+@*Phần tìm kiếm*@
+
+<div class="productList">
+    <h2>Tìm kiếm sản phẩm</h2>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        <div class="form-group toplist">
+            @Html.TextBoxFor(m => m.SearchTerm, new
+       {
+           @class = "search-input",
+           placeholder = "Nhập tên, mô tả hoặc thể loại sản phẩm"
+       })
+            <button type="submit" class="search-button">Tìm kiếm</button>
+
+        </div>
+    }
+</div>
+
+
+
+@Html.Partial("PVFeatureProduct", Model)
+
+@Html.Partial("PVNewProduct", Model)

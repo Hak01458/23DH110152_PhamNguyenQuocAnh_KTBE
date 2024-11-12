@@ -1,0 +1,51 @@
+﻿@model _23DH110152_PhamNguyenQuocAnh_KTBE.Models.Order
+
+@{
+    ViewBag.Title = "Đơn Hàng Của Tôi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đơn Hàng Của Tôi</h2>
+
+<!-- Section Menu Tài Khoản -->
+<div>
+    <h3>Menu Tài Khoản</h3>
+    <ul>
+        <li><a href="@Url.Action("MyOrder", "Order")">Lịch Sử Mua Hàng</a></li>
+    </ul>
+</div>
+
+<!-- Section Tìm Kiếm Đơn Hàng -->
+<div>
+    <h3>Tìm Kiếm Đơn Hàng</h3>
+    <form method="get" action="@Url.Action("MyOrder", "Order")">
+        <input type="text" name="searchTerm" placeholder="Mã đơn hàng hoặc Tên sản phẩm" />
+        <button type="submit">Tìm Kiếm</button>
+    </form>
+    @if (!Model.Any())
+    {
+        <p>BẠN CHƯA CÓ ĐƠN HÀNG NÀO. HÃY ĐẶT ĐƠN NGAY.</p>
+        <a href="@Url.Action("Index", "Home")">Trở về trang chủ</a>
+    }
+</div>
+
+<!-- Section Đơn Hàng Của Tôi -->
+<div>
+    <h3>Đơn Hàng Của Tôi</h3>
+    @foreach (var order in Model)
+    {
+        <div>
+            <p>Đơn hàng ID: @order.Id</p>
+            <p>Trạng thái: @order.Status</p>
+            <button onclick="addToCart(@order.Id)">Mua Lại</button>
+            <a href="@Url.Action("Details", "Product", new { id = order.ProductId })">Xem Chi Tiết</a>
+        </div>
+    }
+</div>
+
+<script>
+    function addToCart(orderId) {
+        // Thêm sản phẩm vào giỏ hàng với số lượng = 1
+        // Gọi API hoặc thực hiện logic thêm vào giỏ hàng
+    }
+</script>
